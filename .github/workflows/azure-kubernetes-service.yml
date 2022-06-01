@@ -5,7 +5,7 @@ name: Build and deploy an app to AKS
             - draft
     workflow_dispatch: null
 env:
-    AZURE_CONTAINER_REGISTRY: draftsuper767.azurecr.io
+    AZURE_CONTAINER_REGISTRY: draftsuper767
     CLUSTER_NAME: clu-git
     CONTAINER_NAME: draft-super
     DEPLOYMENT_MANIFEST_PATH: ./manifests
