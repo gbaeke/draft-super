@@ -18,7 +18,7 @@ spec:
         app: super-api
     spec:
       containers:
-      - image: draftsuper767.azurecr.io.azurecr.io/draft-super
+      - image: draftsuper767.azurecr.io/draft-super
         name: super-api
         ports:
         - containerPort: 8080
