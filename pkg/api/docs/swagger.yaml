@@ -1,0 +1,60 @@
+basePath: /
+host: localhost:8080
+info:
+  contact:
+    name: Source Code
+    url: https://github.com/gbaeke/super-api
+  description: Super API
+  title: Super API
+  version: "0.1"
+paths:
+  /healthz:
+    get:
+      consumes:
+      - application/json
+      description: Kubernetes uses this as liveness probe
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: Liveness probe
+  /readyz:
+    get:
+      consumes:
+      - application/json
+      description: Kubernetes uses this as readiness probe
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: boolean
+      summary: Readiness probe
+  /state:
+    get:
+      consumes:
+      - application/json
+      description: Read state from configured state store
+      summary: Read state
+    post:
+      consumes:
+      - application/json
+      description: Save state to configured state store
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: Error reading or unmarshalling request body
+          schema:
+            type: string
+        "500":
+          description: Error writing to statestore
+          schema:
+            type: string
+      summary: Save state
+schemes:
+- http
+- https
+swagger: "2.0"

@@ -1,0 +1,90 @@
+{
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "Super API",
+        "title": "Super API",
+        "contact": {
+            "name": "Source Code",
+            "url": "https://github.com/gbaeke/super-api"
+        },
+        "version": "0.1"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/healthz": {
+            "get": {
+                "description": "Kubernetes uses this as liveness probe",
+                "consumes": [
+                    "application/json"
+                ],
+                "summary": "Liveness probe",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/readyz": {
+            "get": {
+                "description": "Kubernetes uses this as readiness probe",
+                "consumes": [
+                    "application/json"
+                ],
+                "summary": "Readiness probe",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        },
+        "/state": {
+            "get": {
+                "description": "Read state from configured state store",
+                "consumes": [
+                    "application/json"
+                ],
+                "summary": "Read state"
+            },
+            "post": {
+                "description": "Save state to configured state store",
+                "consumes": [
+                    "application/json"
+                ],
+                "summary": "Save state",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Error reading or unmarshalling request body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Error writing to statestore",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
