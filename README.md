@@ -7,7 +7,7 @@ openssl req -newkey rsa:4096 \
             -nodes \
             -out draft.crt \
             -keyout draft.key \
-            -subj "/C=BE/ST=OV/L=Somewhere/O=Inity/OU=IT/CN=draft.baeke.info"
+            -subj "/C=BE/ST=OV/L=Somewhere/O=Inity/OU=IT/CN=app.20.126.211.103.nip.io"
 
 # Key Vault
 

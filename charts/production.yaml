@@ -1,0 +1,8 @@
+imageKey:
+    repository: draft7787.azurecr.io/super-api
+    pullPolicy: IfNotPresent
+    tag: latest
+service:
+    annotations: {}
+    type: LoadBalancer
+    port: "80"
