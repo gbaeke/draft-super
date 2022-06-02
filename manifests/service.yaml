@@ -3,7 +3,7 @@ kind: Service
 metadata:
   annotations:
     kubernetes.azure.com/ingress-host: app.20.126.211.103.nip.io
-    kubernetes.azure.com/tls-cert-keyvault-uri: https://kvdraft.vault.azure.net/certificates/mycert/81307987d6164ba9aaa921ce8ae54570
+    kubernetes.azure.com/tls-cert-keyvault-uri: https://kvdraft.vault.azure.net/certificates/mycert/206b037cefe34d97a690ffeb13113ca4
   creationTimestamp: null
   name: super-api
 spec:
