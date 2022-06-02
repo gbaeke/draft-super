@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    kubernetes.azure.com/ingress-host: draft.baeke.info
-    kubernetes.azure.com/tls-cert-keyvault-uri: https://kvdraft.vault.azure.net/certificates/mycert/7f5607fd5bba4d118ba95a153ed6eb05
+    kubernetes.azure.com/ingress-host: app.20.126.211.103.nip.io
+    kubernetes.azure.com/tls-cert-keyvault-uri: https://kvdraft.vault.azure.net/certificates/mycert/81307987d6164ba9aaa921ce8ae54570
   creationTimestamp: null
   name: super-api
 spec:

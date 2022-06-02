@@ -6,7 +6,7 @@ metadata:
     app: super-api
   name: super-api
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: super-api
@@ -18,7 +18,7 @@ spec:
         app: super-api
     spec:
       containers:
-      - image: draftsuper767.azurecr.io/draft-super
+      - image: draft7787.azurecr.io/super-api
         name: super-api
         ports:
         - containerPort: 8080

@@ -5,11 +5,11 @@ name: Build and deploy an app to AKS
             - draft
     workflow_dispatch: null
 env:
-    AZURE_CONTAINER_REGISTRY: draftsuper767
-    CLUSTER_NAME: clu-git
-    CONTAINER_NAME: draft-super
+    AZURE_CONTAINER_REGISTRY: draft7787
+    CLUSTER_NAME: clu-draft
+    CONTAINER_NAME: super-api
     DEPLOYMENT_MANIFEST_PATH: ./manifests
-    IMAGE_PULL_SECRET_NAME: draftsuper767.azurecr.iosecret
+    IMAGE_PULL_SECRET_NAME: draft7787secret
     RESOURCE_GROUP: rg-aks
 jobs:
     buildImage:
@@ -27,7 +27,7 @@ jobs:
                 tenant-id: ${{ secrets.AZURE_TENANT_ID }}
             - name: Build and push image to ACR
               run: |
-                az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g draft-super .
+                az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} .
     createSecret:
         permissions:
             contents: read
@@ -48,9 +48,9 @@ jobs:
             - id: get-acr-creds
               name: Get ACR credentials
               run: |
-                az acr update -n ${{ env.AZURE_CONTAINER_REGISTRY }} -g draft-super --admin-enabled true
-                ACR_USERNAME=$(az acr credential show -g draft-super -n ${{ env.AZURE_CONTAINER_REGISTRY }} --query username -o tsv)
-                ACR_PASSWORD=$(az acr credential show -g draft-super -n ${{ env.AZURE_CONTAINER_REGISTRY }} --query passwords[0].value -o tsv)
+                az acr update -n ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} --admin-enabled true
+                ACR_USERNAME=$(az acr credential show -g ${{ env.RESOURCE_GROUP }} -n ${{ env.AZURE_CONTAINER_REGISTRY }} --query username -o tsv)
+                ACR_PASSWORD=$(az acr credential show -g ${{ env.RESOURCE_GROUP }} -n ${{ env.AZURE_CONTAINER_REGISTRY }} --query passwords[0].value -o tsv)
                 echo "::add-mask::${ACR_USERNAME}"
                 echo "::set-output name=username::${ACR_USERNAME}"
                 echo "::add-mask::${ACR_PASSWORD}"
