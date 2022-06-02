@@ -4,8 +4,8 @@ imageKey:
     tag: latest
 service:
     annotations:
-        kubernetes.azure.com/ingress-host: app.20.126.211.103.nip.io
-        kubernetes.azure.com/tls-cert-keyvault-uri: https://kvdraft.vault.azure.net/certificates/mycert/206b037cefe34d97a690ffeb13113ca4
+        kubernetes.azure.com/ingress-host: app.20.31.139.185.nip.io
+        kubernetes.azure.com/tls-cert-keyvault-uri: https://kvdraft.vault.azure.net/certificates/mycert/61c8aa9513474296a15ffb2b5e6f8c76
     type: ClusterIP
     port: "80"
 replicaCount: 3
