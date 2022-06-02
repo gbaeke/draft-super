@@ -8,3 +8,4 @@ service:
         kubernetes.azure.com/tls-cert-keyvault-uri: https://kvdraft.vault.azure.net/certificates/mycert/206b037cefe34d97a690ffeb13113ca4
     type: ClusterIP
     port: "80"
+replicaCount: 3
